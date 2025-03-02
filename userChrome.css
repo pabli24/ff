@@ -1,0 +1,127 @@
+/* https://github.com/black7375/Firefox-UI-Fix/releases Lepton.zip
+user.js
+user_pref("userChrome.icon.panel_full",     true);
+user_pref("userChrome.icon.library",        true);
+user_pref("userChrome.icon.panel",          true);
+user_pref("userChrome.icon.menu",           true);
+user_pref("userChrome.icon.context_menu",   true);
+user_pref("userChrome.icon.global_menu",    true);
+user_pref("userChrome.icon.global_menubar", true);
+user_pref("userChrome.icon.1-25px_stroke",  true);
+*/
+@import url("css/leptonChrome.css");
+
+/* Even more compact UI (about:config browser.compactmode.show true) */
+:root {
+	&[uidensity="compact"] {
+		--tab-min-height: 24px !important;
+		--tab-label-mask-size: 0.5em !important;
+		--tab-border-radius: 4px !important;
+		--tab-inline-padding: 4px !important;
+		--inline-tab-padding: 4px !important;
+		--tab-block-margin: 2px !important;
+		--toolbarbutton-inner-padding: 3px !important;
+		--toolbarbutton-outer-padding: 3px !important;
+		#PersonalToolbar {
+			--toolbarbutton-inner-padding: 1px !important;
+			--toolbarbutton-outer-padding: 1px !important;
+		}
+		.tabbrowser-tab {
+			--tab-label-mask-size: 0.5em !important;
+		}
+		.toolbarbutton-badge {
+			position: fixed !important;
+		}
+		#personal-toolbar-empty-description, toolbarbutton.bookmark-item:not(.subviewbutton) {
+			padding: var(--bookmark-block-padding) 2px !important;
+		}
+	}
+}
+/* Smaller empty space for grabbing the window in the top right and left */
+.titlebar-spacer[type="pre-tabs"],
+.titlebar-spacer[type="post-tabs"] {
+	width: 10px !important;
+}
+/* Show X button when you hover the tab */
+.tabbrowser-tab:not([pinned]):hover {
+	.tab-close-button {
+		display: block !important;
+	}
+}
+/* Hide "Open" button when you right click the bookmark */
+#placesContext_open {
+	display: none !important;
+}
+
+/* Tab icon */
+.tab-audio-button {
+	--button-size-icon-small: 10px !important;
+	--button-min-height-small: 10px !important;
+	position: absolute !important;
+	z-index: 999 !important;
+	top: 12px !important;
+	left: 12px !important;
+	height: 10px !important;
+	width: 10px !important;
+	margin: 0px !important;
+	padding: 0px !important;
+}
+.button-background {
+	&[type~="icon"]:not(.labelled), &:not(.labelled):has(img) {
+		&[size="small"] {
+			background-size: 10px !important;
+		}
+	}
+}
+button[aria-label="Unmute tab"] .button-background {
+	& img, &[type~="icon"]:not(.labelled) {
+		fill: #ff5050 !important;
+		stroke: #ff5050 !important;
+		background-color: hsla(0, 0%, 0%, 0.6) !important;
+	}
+}
+
+/* Private browsing in the top right. Show icon only */
+.private-browsing-indicator-with-label {
+	margin-inline: 0 !important;
+	.private-browsing-indicator-label {
+		display: none !important;
+	}
+}
+/* Private browsing icon in the top right is my spacer */
+[privatebrowsingmode] .titlebar-spacer[type="post-tabs"] {
+	width: 0 !important;
+}
+
+/* Black background before the website loads */
+:root {
+	--tabpanel-background-color: #000 !important;
+}
+/* Menu, context menu black background */
+.toolbar-menupopup {
+	&, & menupopup {
+		--panel-background: #000 !important;
+	}
+}
+panel#appMenu-popup {
+	--panel-background: #000 !important;
+	--panel-padding-block: 2px !important;
+}
+menupopup#contentAreaContextMenu, menupopup#toolbar-context-menu, menupopup#tabContextMenu, menupopup#placesContext {
+	--panel-background: #000 !important;
+	--panel-padding-block: 2px !important;
+	menu, menuitem, menupopup {
+		--panel-background: #000 !important;
+		--panel-padding-block: 2px !important;
+		&:where([disabled="true"]) {
+			color: var(--panel-disabled-color);
+			text-shadow: none;
+		}
+		&:where([_moz-menuactive]:not([disabled="true"])) {
+			background-color: #222 !important;
+		}
+		&:where([_moz-menuactive="true"][disabled="true"]) {
+			background-color: #111 !important;
+		}
+	}
+}

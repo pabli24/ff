@@ -1,0 +1,25 @@
+/* Disable picture in picture button on videos without disabling the button in the url bar */
+button#pictureInPictureToggle.pip-wrapper {
+	display: none;
+}
+
+/* Black background for about pages */
+@-moz-document url-prefix("about:") {
+	:root {
+		--in-content-page-color: rgb(251,251,254) !important;
+		--in-content-page-background: #000 !important;
+		--in-content-box-background: #111 !important;
+		--newtab-background-color: #000 !important;
+	}
+}
+@-moz-document url-prefix("about:privatebrowsing") {
+	.search-handoff-button, .search-handoff-button:active, .search-handoff-button:enabled:hover:active {
+		background: #000 var(--newtab-search-icon) 12px center no-repeat !important;
+	}
+	.search-inner-wrapper .search-handoff-button:hover, .search-inner-wrapper .search-handoff-button:hover:active {
+		background-color: #000 !important;
+	}
+	.fake-textbox {
+		color: rgb(255, 255, 255) !important;
+	}
+}
