@@ -4,7 +4,12 @@
 `toolkit.legacyUserProfileCustomizations.stylesheets` true  
 
 about:support → Application Basics → Profile Folder  
-%APPDATA%\Mozilla\Firefox\Profiles\<your profile>\chrome
+%APPDATA%\Mozilla\Firefox\Profiles\\<your profile\>\chrome
+
+### Allow to install unsigned extensions
+`xpinstall.signatures.required` false  
+
+[Developer Edition](https://www.mozilla.org/firefox/developer/) and [Nightly](https://nightly.mozilla.org/) versions of Firefox allow to install unsigned add-ons
 
 ### Enable extensions on restricted domains
 `extensions.webextensions.restrictedDomains` remove: ,addons.mozilla.org ,support.mozilla.org  
