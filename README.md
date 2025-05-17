@@ -54,6 +54,9 @@ about:support → Application Basics → Profile Folder
 ### Disable Quick Find hotkey (`/` and `’` keys)
 `accessibility.typeaheadfind.manual` false
 
+### Disable Tab Groups
+`browser.tabs.groups.enabled` false
+
 ### Disable Container Tabs
 `privacy.userContext.enabled` false
 
